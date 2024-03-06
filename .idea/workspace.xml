@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7c832b66-8891-4058-89a5-432af5fb064a" name="Changes" comment="" />
+    <list default="true" id="7c832b66-8891-4058-89a5-432af5fb064a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -9,6 +11,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GithubDefaultAccount">
+    <option name="defaultAccountId" value="c02565ab-d42a-4409-ad51-bfc58a450322" />
   </component>
   <component name="ProjectId" id="2dJRObqrhaCEfOl8si1oZ3D5u5a" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -23,6 +28,7 @@
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -34,7 +40,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1709724165420</updated>
-      <workItem from="1709724166535" duration="1000" />
+      <workItem from="1709724166535" duration="227000" />
     </task>
     <servers />
   </component>
