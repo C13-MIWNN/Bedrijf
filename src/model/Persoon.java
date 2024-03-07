@@ -42,20 +42,17 @@ public class Persoon {
         return maandSalaris >= GRENSWAARDE_BONUS;
     }
 
+    public String geefPersoonsInformatie() {
+        return String.format("%s verdient %.2f en woont in %s en heeft %s recht op een bonus.",
+                naam, maandSalaris, woonplaats, heeftRechtOpBonus() ? "wel" : "geen");
+    }
+
     public int getPersoneelsNummer() {
         return personeelsNummer;
     }
 
     public String getNaam() {
         return naam;
-    }
-
-    public String getWoonplaats() {
-        return woonplaats;
-    }
-
-    public double getMaandSalaris() {
-        return maandSalaris;
     }
 
     private void setMaandSalaris(double hetNieuweMaandsalaris) {

@@ -21,16 +21,16 @@ public class BedrijfLauncher {
         Persoon manager = new Persoon();
         System.out.println(Persoon.aantalPersonen);
 
-        printPersoonsInformatie(baas);
-        printPersoonsInformatie(medewerker);
-        printPersoonsInformatie(assistent);
-        printPersoonsInformatie(manager);
-    }
+        String krijgtBonus = "geen";
+        if (baas.heeftRechtOpBonus()) {
+            krijgtBonus = "wel";
+        }
+        System.out.printf("%s heeft %s recht op bonus.\n", baas.getNaam(), krijgtBonus);
 
-    public static void printPersoonsInformatie(Persoon persoon) {
-        System.out.printf("%s verdient %.2f en woont in %s en heeft %s recht op een bonus.\n",
-                persoon.getNaam(),persoon.getMaandSalaris(), persoon.getWoonplaats(),
-                persoon.heeftRechtOpBonus() ? "wel" : "geen");
+        System.out.println(baas.geefPersoonsInformatie());
+        System.out.println(medewerker.geefPersoonsInformatie());
+        System.out.println(assistent.geefPersoonsInformatie());
+        System.out.println(manager.geefPersoonsInformatie());
     }
 
 }
