@@ -1,6 +1,9 @@
 package controller;
 
+import model.Afdeling;
 import model.Persoon;
+import model.Werknemer;
+import model.Zzper;
 
 /**
  * @author Vincent Velthuizen
@@ -10,27 +13,28 @@ import model.Persoon;
 public class BedrijfLauncher {
 
     public static void main(String[] args) {
-        System.out.println(Persoon.aantalPersonen);
-        Persoon baas = new Persoon("Mark", "Den Haag", 10000);
-        System.out.println(Persoon.aantalPersonen);
-        System.out.println(baas.getPersoneelsNummer());
-        Persoon medewerker = new Persoon("Caroline", "Delft", 4000);
-        System.out.println(Persoon.aantalPersonen);
-        System.out.println(medewerker.getPersoneelsNummer());
-        Persoon assistent = new Persoon ("Klaas");
-        Persoon manager = new Persoon();
-        System.out.println(Persoon.aantalPersonen);
+        Afdeling[] afdelingen = new Afdeling[4];
 
-        String krijgtBonus = "geen";
-        if (baas.heeftRechtOpBonus()) {
-            krijgtBonus = "wel";
-        }
-        System.out.printf("%s heeft %s recht op bonus.\n", baas.getNaam(), krijgtBonus);
+        afdelingen[0] = new Afdeling("Uitvoering", "Hilversum");
+        afdelingen[1] = new Afdeling("Support", "Amsterdam");
+        afdelingen[2] = new Afdeling("Management", "Almere");
+        afdelingen[3] = new Afdeling("Documentatie", "Gouda");
 
-        System.out.println(baas.geefPersoonsInformatie());
-        System.out.println(medewerker.geefPersoonsInformatie());
-        System.out.println(assistent.geefPersoonsInformatie());
-        System.out.println(manager.geefPersoonsInformatie());
+        Werknemer baas = new Werknemer("Mark", "Den Haag", afdelingen[2], 10000);
+        Werknemer medewerker = new Werknemer("Caroline", "Delft", afdelingen[1], 4000);
+        Zzper assistent = new Zzper("Klaas", "Diemen", afdelingen[3], 50.00);
+
+        assistent.huurIn(160);
+
+        System.out.printf("Het aantal personen in dit bedrijf is %d\n", Persoon.aantalPersonen);
+        System.out.println(baas);
+        System.out.println(medewerker);
+        System.out.println(assistent);
+
+        System.out.println();
+        System.out.printf("%s verdient %.2f per jaar\n", baas.getNaam(), baas.berekenJaarInkomen());
+        System.out.printf("%s verdient %.2f per jaar\n", medewerker.getNaam(), medewerker.berekenJaarInkomen());
+        System.out.printf("%s verdient %.2f per jaar\n", assistent.getNaam(), assistent.berekenJaarInkomen());
     }
 
 }

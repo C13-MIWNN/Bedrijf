@@ -8,26 +8,25 @@ package model;
 public class Persoon {
     public static final double GRENSWAARDE_BONUS = 4500.00;
 
-    private static final String DEFAULT_NAAM = "Onbekend";
-    private static final String DEFAULT_WOONPLAATS = "Onbekend";
-    private static final double DEFAULT_MAAND_SALARIS = 0.0;
+    protected static final String DEFAULT_NAAM = "Onbekend";
+    protected static final String DEFAULT_WOONPLAATS = "Onbekend";
 
     public static int aantalPersonen = 0;
 
     private int personeelsNummer;
     private String naam;
     private String woonplaats;
-    private double maandSalaris;
+    private Afdeling afdeling;
 
-    public Persoon(String naam, String woonplaats, double maandSalaris) {
+    public Persoon(String naam, String woonplaats, Afdeling afdeling) {
         this.naam = naam;
         this.woonplaats = woonplaats;
-        setMaandSalaris(maandSalaris);
+        this.afdeling = afdeling;
         this.personeelsNummer = ++aantalPersonen;
     }
 
     public Persoon(String naam) {
-        this(naam, DEFAULT_WOONPLAATS, DEFAULT_MAAND_SALARIS);
+        this(naam, DEFAULT_WOONPLAATS, new Afdeling());
     }
 
     public Persoon() {
@@ -35,33 +34,15 @@ public class Persoon {
     }
 
     public double berekenJaarInkomen() {
-        return 12 * maandSalaris;
+        return 0;
     }
 
-    public boolean heeftRechtOpBonus() {
-        return maandSalaris >= GRENSWAARDE_BONUS;
-    }
-
-    public String geefPersoonsInformatie() {
-        return String.format("%s verdient %.2f en woont in %s en heeft %s recht op een bonus.",
-                naam, maandSalaris, woonplaats, heeftRechtOpBonus() ? "wel" : "geen");
-    }
-
-    public int getPersoneelsNummer() {
-        return personeelsNummer;
+    @Override
+    public String toString() {
+        return String.format("%s woont in %s en werkt op %s", this.naam, this.woonplaats, this.afdeling);
     }
 
     public String getNaam() {
         return naam;
-    }
-
-    private void setMaandSalaris(double hetNieuweMaandsalaris) {
-        if (hetNieuweMaandsalaris < 0) {
-            System.err.println("Het opgegeven maandsalaris is niet geldig, het mag geen negatief getal zijn. " +
-                    "Maandsalaris wordt op 0 gezet");
-            this.maandSalaris = DEFAULT_MAAND_SALARIS;
-        } else {
-            this.maandSalaris = hetNieuweMaandsalaris;
-        }
     }
 }
