@@ -5,7 +5,7 @@ package model;
  *
  * Personen die incidenteel ingehuurd worden door ons bedrijf
  **/
-public class Zzper extends Persoon {
+public class Zzper extends Persoon implements Oproepbaar {
     private double uurtarief;
     private int urenGewerkt;
 
@@ -20,6 +20,7 @@ public class Zzper extends Persoon {
         return urenGewerkt * uurtarief;
     }
 
+    @Override
     public void huurIn(int uren) {
         urenGewerkt += uren;
     }

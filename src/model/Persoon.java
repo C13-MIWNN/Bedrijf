@@ -5,7 +5,7 @@ package model;
  *
  * Dit is een persoon betrokken bij de activiteiten van ons bedrijf
  **/
-public abstract class Persoon {
+public abstract class Persoon implements Comparable<Persoon> {
     public static final double GRENSWAARDE_BONUS = 4500.00;
 
     protected static final String DEFAULT_NAAM = "Onbekend";
@@ -34,6 +34,11 @@ public abstract class Persoon {
     }
 
     public abstract double berekenJaarInkomen();
+
+    @Override
+    public int compareTo(Persoon anderePersoon) {
+        return this.naam.compareTo(anderePersoon.naam);
+    }
 
     @Override
     public String toString() {
