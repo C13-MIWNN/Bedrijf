@@ -25,4 +25,8 @@ public class Afdeling {
     public String toString() {
         return String.format("afdeling %s te %s", this.afdelingsNaam, this.afdelingsPlaats);
     }
+
+    public String getAfdelingsNaam() {
+        return afdelingsNaam;
+    }
 }
