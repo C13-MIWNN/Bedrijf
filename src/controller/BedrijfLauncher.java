@@ -24,7 +24,9 @@ public class BedrijfLauncher {
         AfdelingDAO afdelingDAO = new AfdelingDAO(dBaccess);
 
         dBaccess.openConnection();
-        afdelingDAO.slaAfdelingOp(new Afdeling("Robert '); DROP TABLE Student; --", "Groningen"));
+        for (Afdeling afdeling : afdelingDAO.geefAfdelingenMetPlaats("Hilversum")) {
+            System.out.println(afdeling);
+        }
         dBaccess.closeConnection();
     }
 
