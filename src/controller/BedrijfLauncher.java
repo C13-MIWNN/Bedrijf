@@ -14,7 +14,7 @@ import java.util.Scanner;
 
 /**
  * @author Vincent Velthuizen
- *
+ * <p>
  * Maak personen aan binnen mijn bedrijf
  **/
 public class BedrijfLauncher {
@@ -24,6 +24,8 @@ public class BedrijfLauncher {
         AfdelingDAO afdelingDAO = new AfdelingDAO(dBaccess);
 
         dBaccess.openConnection();
+        afdelingDAO.slaAfdelingOp(new Afdeling("HR", "Hilversum"));
+
         for (Afdeling afdeling : afdelingDAO.geefAfdelingenMetPlaats("Hilversum")) {
             System.out.println(afdeling);
         }

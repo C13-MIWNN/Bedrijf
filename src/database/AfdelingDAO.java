@@ -11,23 +11,22 @@ import java.util.ArrayList;
  * @author Vincent Velthuizen
  * Haal afdelingen uit en zet ze in de DB
  **/
-public class AfdelingDAO {
-    private final DBaccess dBaccess;
+public class AfdelingDAO extends AbstractDAO {
 
     public AfdelingDAO(DBaccess dBaccess) {
-        this.dBaccess = dBaccess;
+        super(dBaccess);
     }
 
     public void slaAfdelingOp(Afdeling afdeling) {
         String sql = "INSERT INTO afdeling VALUES (?, ?);";
 
         try {
-            PreparedStatement preparedStatement = dBaccess.getConnection().prepareStatement(sql);
+            setupPreparedStatement(sql);
 
             preparedStatement.setString(1, afdeling.getAfdelingsNaam());
             preparedStatement.setString(2, afdeling.getAfdelingsPlaats());
 
-            preparedStatement.executeUpdate();
+            executeManipulateStatement();
         } catch (SQLException sqlException) {
             System.err.println(DBaccess.SQL_EXCEPTION + sqlException.getMessage());
         }
@@ -39,9 +38,9 @@ public class AfdelingDAO {
         String sql = "SELECT afdelingsnaam, afdelingsplaats FROM afdeling;";
 
         try {
-            PreparedStatement preparedStatement = dBaccess.getConnection().prepareStatement(sql);
+            setupPreparedStatement(sql);
 
-            ResultSet resultSet = preparedStatement.executeQuery();
+            ResultSet resultSet = executeSelectStatement();
 
             while (resultSet.next()) {
                 String afdelingsNaam = resultSet.getString(1);
@@ -62,10 +61,10 @@ public class AfdelingDAO {
         String sql = "SELECT afdelingsnaam FROM afdeling WHERE afdelingsplaats = ?;";
 
         try {
-            PreparedStatement preparedStatement = dBaccess.getConnection().prepareStatement(sql);
+            setupPreparedStatement(sql);
             preparedStatement.setString(1, plaats);
 
-            ResultSet resultSet = preparedStatement.executeQuery();
+            ResultSet resultSet = executeSelectStatement();
 
             while (resultSet.next()) {
                 String afdelingsNaam = resultSet.getString(1);
