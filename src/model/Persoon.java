@@ -49,6 +49,10 @@ public abstract class Persoon implements Comparable<Persoon> {
         return naam;
     }
 
+    public String getWoonplaats() {
+        return woonplaats;
+    }
+
     public Afdeling getAfdeling() {
         return afdeling;
     }
